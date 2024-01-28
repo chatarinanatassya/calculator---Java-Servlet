@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decimal Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            margin: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form id="conversionForm">
+            <label for="decimalInput">Decimal:</label>
+            <input type="text" id="decimalInput" name="decimalInput" required><br><br>
+            <input type="submit" value="Convert">
+        </form>
+        <div id="result" style="display: none;">
+            <h3 id="decimalResult"></h3>
+            <h3 id="binaryResult"></h3>
+            <h3 id="octalResult"></h3>
+            <h3 id="hexadecimalResult"></h3>
+            <br>
+            <a href="index.html">Back to main page</a>
+        </div>
+    </center>
+
+    <script>
+        document.getElementById("conversionForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            convertDecimal();
+        });
+
+        function convertDecimal() {
+            var decimalInput = parseInt(document.getElementById("decimalInput").value);
+
+            var binary = decimalInput.toString(2);
+            var octal = decimalInput.toString(8);
+            var hexadecimal = decimalInput.toString(16).toUpperCase();
+
+            document.getElementById("decimalResult").innerText = "Decimal: " + decimalInput;
+            document.getElementById("binaryResult").innerText = "Binary: " + binary;
+            document.getElementById("octalResult").innerText = "Octal: " + octal;
+            document.getElementById("hexadecimalResult").innerText = "Hexadecimal: " + hexadecimal;
+
+            document.getElementById("conversionForm").style.display = "none";
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
